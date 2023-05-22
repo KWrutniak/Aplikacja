@@ -4,6 +4,10 @@ from kivy.uix.label import Label
 from kivy.uix.image import Image
 from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
+<<<<<<< HEAD
+=======
+import mysql.connector
+>>>>>>> 27dafba (Initial commit)
  
 class mainHello(App):
     def build(self):
@@ -13,6 +17,15 @@ class mainHello(App):
         self.window.pos_hint = {"center_x": 0.5, "center_y": 0.5}
         #add widgets to window
 
+<<<<<<< HEAD
+=======
+        #connect to database
+        #mybd = mysql.connector.connect(
+           # host = "localhost",
+        # user = "root",
+         #   passwd = "passWd123",)
+
+>>>>>>> 27dafba (Initial commit)
         #image widget
         self.window.add_widget(Image(source="logo.jpg"))
         #Label widget

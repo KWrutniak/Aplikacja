@@ -4,10 +4,8 @@ from kivy.uix.label import Label
 from kivy.uix.image import Image
 from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
-<<<<<<< HEAD
-=======
-import mysql.connector
->>>>>>> 27dafba (Initial commit)
+import sqlite3
+
  
 class mainHello(App):
     def build(self):
@@ -17,15 +15,9 @@ class mainHello(App):
         self.window.pos_hint = {"center_x": 0.5, "center_y": 0.5}
         #add widgets to window
 
-<<<<<<< HEAD
-=======
-        #connect to database
-        #mybd = mysql.connector.connect(
-           # host = "localhost",
-        # user = "root",
-         #   passwd = "passWd123",)
 
->>>>>>> 27dafba (Initial commit)
+
+
         #image widget
         self.window.add_widget(Image(source="logo.jpg"))
         #Label widget
@@ -73,6 +65,7 @@ class mainHello(App):
                     background_color = '#cececc'
                     )
         self.window.add_widget(self.password)
+
         #button widget
         self.button = Button(
                       text="ZALOGUJ!",
@@ -83,14 +76,22 @@ class mainHello(App):
         self.button.bind(on_press=self.callback)
         self.window.add_widget(self.button)
 
-        
-
-        
-
         return self.window
+
+    def checkUser(self, instance):
+
+    # connect to database
+    # conn = sqlite3.connect('users.sqlite')
+    # cur = conn.cursor()
+
+    # conn.commit()
+    # cur.close()
+    # conn.close()
 
     def callback(self, instance):
         self.logowanie.text = "PODAJ HASŁO DLA " + self.user.text + " !"
+
+
 
 if __name__ == "__main__":
     mainHello().run()

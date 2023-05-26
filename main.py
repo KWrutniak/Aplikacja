@@ -20,9 +20,8 @@ class mainHello(App):
 
         #image widget
         self.window.add_widget(Image(source="logo.jpg"))
-        #Label widget
-        
 
+        #Label widget
         self.logowanie = Label(
                          text="PODAJ LOGIN I HASŁO",
                          font_size = 18,
@@ -68,28 +67,48 @@ class mainHello(App):
 
         #button widget
         self.button = Button(
-                      text="ZALOGUJ!",
+                      text="ZALOGUJ",
                       size_hint = (1, 0.5),
                       bold = True,
                       background_color = '#76b5c5'
                       )
-        self.button.bind(on_press=self.callback)
+
+        self.button.bind(on_press=self.when_press)
         self.window.add_widget(self.button)
 
         return self.window
 
-    def checkUser(self, instance):
 
-    # connect to database
-    # conn = sqlite3.connect('users.sqlite')
-    # cur = conn.cursor()
+    def when_press(self, instance):
 
-    # conn.commit()
-    # cur.close()
-    # conn.close()
+        #connect to database
 
-    def callback(self, instance):
-        self.logowanie.text = "PODAJ HASŁO DLA " + self.user.text + " !"
+        conn = sqlite3.connect('users.sqlite')
+        cur = conn.cursor()
+        conn.commit()
+
+        login1 = self.user.text
+        password = self.password.text
+
+        query = 'SELECT login, passwd, imie FROM users WHERE login = ? AND passwd = ?'
+        cur.execute(query, (login1, password))
+        result = cur.fetchone()
+        conn.commit()
+        print('[DEBUG][check] result:', result)
+        return result
+
+        cur.close()
+        conn.close()
+    def  check():
+
+        if check(login1, password):
+            login1 == login
+            password == passwd
+            self.logowanie.text = "WITAJ " + imie + " !"
+        else:
+            self.logowanie.text = "PODAJ POPRAWNE HASŁO DLA " + self.user.text + " !"
+
+
 
 
 

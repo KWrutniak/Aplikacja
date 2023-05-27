@@ -11,15 +11,11 @@ class mainHello(App):
     def build(self):
         self.window = GridLayout()
         self.window.cols =1
-        self.window.size_hint = (0.6, 0.7)
+        self.window.size_hint = (0.3, 0.7)
         self.window.pos_hint = {"center_x": 0.5, "center_y": 0.5}
-        #add widgets to window
-
-
-
 
         #image widget
-        self.window.add_widget(Image(source="logo.jpg"))
+        self.window.add_widget(Image(source="logo.jpg", size_hint_y=None, height=(180)))
 
         #Label widget
         self.logowanie = Label(
@@ -42,7 +38,8 @@ class mainHello(App):
         self.user = TextInput(
                     multiline=False,
                     padding_y = (20, 20),
-                    size_hint = (1, 0.5),
+                    halign='center',
+                    #size_hint = (1, 0.5),
                     background_color = '#cececc'
                     )
         self.window.add_widget(self.user)
@@ -60,7 +57,8 @@ class mainHello(App):
                     multiline=False,
                     password=True, 
                     padding_y = (20, 20),
-                    size_hint = (1, 0.5),
+                    halign = 'center',
+                    #size_hint = (1, 0.5),
                     background_color = '#cececc'
                     )
         self.window.add_widget(self.password)
@@ -78,7 +76,6 @@ class mainHello(App):
 
         return self.window
 
-
     def when_press(self, instance):
 
         #connect to database
@@ -90,26 +87,23 @@ class mainHello(App):
         login1 = self.user.text
         password = self.password.text
 
-        query = 'SELECT login, passwd, imie FROM users WHERE login = ? AND passwd = ?'
+        query = ('SELECT login, passwd, imie FROM users WHERE login = ? AND passwd = ?')
         cur.execute(query, (login1, password))
         result = cur.fetchone()
         conn.commit()
-        print('[DEBUG][check] result:', result)
+        print(' result:', result)
+
+    #sprawdzenie poprawności danych
+
+        if login1 == result[0] and password == result[1]:
+            self.logowanie.text = "WITAJ " + result[2] + " !"
+        else:
+            self.logowanie.text = "DANE NIEPOPRAWNE!"
+
         return result
 
         cur.close()
         conn.close()
-    def  check():
-
-        if check(login1, password):
-            login1 == login
-            password == passwd
-            self.logowanie.text = "WITAJ " + imie + " !"
-        else:
-            self.logowanie.text = "PODAJ POPRAWNE HASŁO DLA " + self.user.text + " !"
-
-
-
 
 
 if __name__ == "__main__":

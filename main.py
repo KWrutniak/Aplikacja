@@ -94,11 +94,10 @@ class mainHello(App):
         print(' result:', result)
 
     #sprawdzenie poprawności danych
-
-        if login1 == result[0] and password == result[1]:
-            self.logowanie.text = "WITAJ " + result[2] + " !"
-        else:
+        if result == None or login1 != result[0] or password != result[1]:
             self.logowanie.text = "DANE NIEPOPRAWNE!"
+        else:
+            self.logowanie.text = "WITAJ " + result[2] + " !"
 
         return result
 

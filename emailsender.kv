@@ -1,0 +1,34 @@
+<Email>:
+    orientation:'vertical'
+    padding:10
+    spacing:10
+    id: object
+    status: status
+    Label:
+        text:'WYŚLIJ E-MAIL'
+        font_size:20
+        color: '#76b5c5'
+    TextInput:
+        text:'Twój adres email'
+        size_hint: 1, 0.2
+        id: to
+    TextInput:
+        text:'Tu wpisz wiadomość ...'
+        id: content
+    GridLayout:
+        cols:2
+        Button:
+            text:'WYSLIJ'
+            on_release:
+                object.sendemail(to.text,content.text)
+        Button:
+            text:'WYCZYSC'
+            on_press:
+                to.text = 'Twój adres email'
+                content.text = 'Tu wpisz wiadomość ...'
+    Label:
+        id: status
+        size_hint: 1, 0.2
+
+
+

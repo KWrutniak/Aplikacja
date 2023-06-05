@@ -6,7 +6,6 @@ from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
 import sqlite3
 
- 
 class mainHello(App):
     def build(self):
         self.window = GridLayout()
@@ -15,9 +14,8 @@ class mainHello(App):
         self.window.pos_hint = {"center_x": 0.5, "center_y": 0.5}
 
         #image widget
-        self.window.add_widget(Image(source="logo.jpg", size_hint_y=None, height=(180)))
+        self.window.add_widget(Image(source="logo2.jpg", size_hint_y=None, height=(180)))
 
-        #Label widget
         self.logowanie = Label(
                          text="PODAJ LOGIN I HASŁO",
                          font_size = 18,
@@ -34,12 +32,10 @@ class mainHello(App):
         
         self.window.add_widget(self.label)
 
-        #text input widget
         self.user = TextInput(
                     multiline=False,
                     padding_y = (20, 20),
                     halign='center',
-                    #size_hint = (1, 0.5),
                     background_color = '#cececc'
                     )
         self.window.add_widget(self.user)
@@ -58,12 +54,10 @@ class mainHello(App):
                     password=True, 
                     padding_y = (20, 20),
                     halign = 'center',
-                    #size_hint = (1, 0.5),
                     background_color = '#cececc'
                     )
         self.window.add_widget(self.password)
 
-        #button widget
         self.button = Button(
                       text="ZALOGUJ",
                       size_hint = (1, 0.5),
@@ -79,7 +73,6 @@ class mainHello(App):
     def when_press(self, instance):
 
         #connect to database
-
         conn = sqlite3.connect('users.sqlite')
         cur = conn.cursor()
         conn.commit()
@@ -93,17 +86,15 @@ class mainHello(App):
         conn.commit()
         print(' result:', result)
 
-    #sprawdzenie poprawności danych
+        #sprawdzenie poprawności danych
         if result == None or login1 != result[0] or password != result[1]:
             self.logowanie.text = "DANE NIEPOPRAWNE!"
         else:
             self.logowanie.text = "WITAJ " + result[2] + " !"
-
         return result
 
         cur.close()
         conn.close()
-
 
 if __name__ == "__main__":
     mainHello().run()

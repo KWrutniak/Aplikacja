@@ -43,8 +43,8 @@ class Schedule(BoxLayout):
     def __init__(self,table='', **kwargs):
         super().__init__(**kwargs)
 
-        current_datetime = datetime.now()
-        current_month = current_datetime.strftime("%B")
+        #current_datetime = datetime.now()
+        #current_month = current_datetime.strftime("%B")
 
 
 

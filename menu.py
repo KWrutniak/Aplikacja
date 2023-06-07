@@ -25,15 +25,15 @@ class Menu(App):
         self.button.bind(on_press=self.callback)
         self.window.add_widget(self.button)
 
-        self.button = Button(
-                      text="STATYSTYKA",
-                      size_hint = (1, 0.5),
-                      bold = True,
-                      background_color = '#76b5c5'
-                      )
+        #self.button = Button(
+                      #text="STATYSTYKA",
+                     # size_hint = (1, 0.5),
+                     # bold = True,
+                      #background_color = '#76b5c5'
+                      #)
 
-        self.button.bind(on_press=self.callback)
-        self.window.add_widget(self.button)
+       # self.button.bind(on_press=self.callback)
+       # self.window.add_widget(self.button)
 
 
         self.button = Button(

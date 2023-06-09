@@ -43,11 +43,6 @@ class Schedule(BoxLayout):
     def __init__(self,table='', **kwargs):
         super().__init__(**kwargs)
 
-        #current_datetime = datetime.now()
-        #current_month = current_datetime.strftime("%B")
-
-
-
         data = {
             'Poniedziałek':{0:(''),1:('05.06' +'  8 - 16'),2:('12.06' +'  8 - 16'),3:('19.06' +'  8 - 16'), 4:('26.06' +'  8 - 16')},
             'Wtorek':{0:(''),1:('06.06' +'  8 - 16'),2:('13.06' +'  8 - 16'),3:('20.06' +'  8 - 16'), 4:('27.06' +'  8 - 16')},

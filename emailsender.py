@@ -5,11 +5,11 @@ import smtplib as smtp
 from_email = 'aplikacjatestowa2@gmail.com'
 passwd = 'fgdfjshigfcfqtyj'
 
-class Email(BoxLayout):
+class Emailsender(BoxLayout):
 
     def sendemail(self, to, content):
         content = content.encode("UTF-8")
-        print(to, content)
+        #print(to, content)
 
         self.status.text = 'W trakcie wysyłania ...'
         server = smtp.SMTP(
@@ -32,7 +32,7 @@ class Email(BoxLayout):
 
 class EmailSenderApp(App):
     def build(self):
-        return Email()
+        return Emailsender()
 
 if __name__ == '__main__':
     EmailSenderApp().run()
